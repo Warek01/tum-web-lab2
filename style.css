@@ -161,6 +161,21 @@ address {
 
 footer {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  padding: 32px var(--padding-x-global);
+  background-color: var(--background-secondary);
+}
+
+footer nav {
+  display: flex;
+  gap: 32px;
+}
+
+footer nav a {
+  text-decoration: none;
+  color: var(--text-info);
 }
 
 /* Utility */
