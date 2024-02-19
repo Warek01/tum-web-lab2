@@ -75,6 +75,38 @@ footer {
   display: flex;
 }
 
+#features-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-y-global);
+}
+
+#features-list .feature {
+  display: flex;
+  gap: 40px;
+}
+
+#features-list .feature svg {
+  width: 90px;
+  height: 90px;
+  fill: var(--text-primary);
+}
+
+#features-list .feature div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#features-list .feature h2 {
+  color: var(--text-secondary);
+}
+
+#features-list .feature:nth-child(even) {
+  text-align: right;
+  align-self: end;
+  flex-direction: row-reverse;
+}
 
 /* Sections */
 #section-hero {
@@ -101,6 +133,12 @@ footer {
   height: 96px;
 }
 
+#section-what-we-offer {
+  padding: 0 var(--padding-x-global);
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
 
 /* Utility */
 .logo {
