@@ -19,8 +19,9 @@
   --text-fail: rgb(232, 65, 24);
   --text-info: rgb(72, 126, 176);
 
-  --text-small: 11px;
-  --text-default: 14px;
+  --text-small: 12px;
+  --text-default: 15px;
+  --text-large: 20px;
   --text-subtitle: 24px;
   --text-logo: 32px;
   --text-title: 48px;
@@ -135,6 +136,27 @@ address {
   gap: 12px;
   text-align: right;
   line-height: 1.25;
+}
+
+#statistics {
+  flex-direction: row;
+  background-color: rgba(var(--background-white-rgb), .1);
+  padding-top: 90px;
+  padding-bottom: 90px;
+  font-size: var(--text-subtitle);
+  font-weight: 700;
+}
+
+#statistics div {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  flex: 1;
+}
+
+#statistics div:nth-of-type(2) {
+  text-align: right;
+  border-left: 1px solid var(--text-primary);
 }
 
 footer {
