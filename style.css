@@ -43,6 +43,10 @@ body {
   background-color: var(--background-primary);
 }
 
+svg {
+  fill: var(--text-primary);
+}
+
 header {
   display: flex;
   height: 90px;
@@ -55,12 +59,6 @@ header {
 #header-logo {
   display: flex;
   gap: 8px;
-}
-
-#header-logo svg {
-  fill: var(--text-primary);
-  width: 32px;
-  height: 32px;
 }
 
 main {
@@ -90,12 +88,6 @@ main section {
   background-color: rgba(var(--background-white-rgb), 0.1);
 }
 
-#section-why-us svg {
-  fill: var(--text-primary);
-  width: 92px;
-  height: 92px;
-}
-
 #features-list {
   display: flex;
   width: 100%;
@@ -112,7 +104,6 @@ main section {
 #features-list .feature svg {
   width: 72px;
   height: 72px;
-  fill: var(--text-primary);
 }
 
 #features-list .feature div {
