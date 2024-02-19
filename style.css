@@ -43,8 +43,6 @@ body {
   background-color: var(--background-primary);
 }
 
-
-/* Components */
 header {
   display: flex;
   height: 90px;
@@ -71,24 +69,49 @@ main {
   gap: var(--gap-y-global);
 }
 
-footer {
+main section {
   display: flex;
+  flex-direction: column;
+  gap: 72px;
+  align-items: start;
+  padding: 0 var(--padding-x-global);
+}
+
+#section-hero {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#section-why-us {
+  flex-direction: row;
+  gap: 130px;
+  padding: 150px var(--padding-x-global);
+  background-color: rgba(var(--background-white-rgb), 0.1);
+}
+
+#section-why-us svg {
+  fill: var(--text-primary);
+  width: 92px;
+  height: 92px;
 }
 
 #features-list {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  gap: var(--gap-y-global);
+  gap: 72px;
 }
 
 #features-list .feature {
   display: flex;
-  gap: 40px;
+  gap: 36px;
+  max-width: 780px;
 }
 
 #features-list .feature svg {
-  width: 90px;
-  height: 90px;
+  width: 72px;
+  height: 72px;
   fill: var(--text-primary);
 }
 
@@ -112,43 +135,8 @@ footer {
   align-self: center;
 }
 
-/* Sections */
-#section-hero {
+footer {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--padding-x-global);
-}
-
-#section-why-us {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 150px;
-  padding: 150px var(--padding-x-global);
-  background-color: rgba(var(--background-white-rgb), 0.1);
-}
-
-#section-why-us svg {
-  fill: var(--text-primary);
-  width: 96px;
-  height: 96px;
-}
-
-#section-what-we-offer {
-  padding: 0 var(--padding-x-global);
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
-}
-
-#section-find-us {
-  display: flex;
-  flex-direction: column;
-  gap: 72px;
-  padding: 0 var(--padding-x-global);
 }
 
 /* Utility */
