@@ -43,6 +43,7 @@ body {
   background-color: var(--background-primary);
 }
 
+
 /* Components */
 header {
   display: flex;
@@ -70,6 +71,12 @@ main {
   gap: var(--gap-y-global);
 }
 
+footer {
+  display: flex;
+}
+
+
+/* Sections */
 #section-hero {
   display: flex;
   flex-direction: row;
@@ -94,9 +101,6 @@ main {
   height: 96px;
 }
 
-footer {
-  display: flex;
-}
 
 /* Utility */
 .logo {
