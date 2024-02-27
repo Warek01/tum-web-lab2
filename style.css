@@ -16,22 +16,20 @@
   --text-disabled: rgb(127, 143, 166);
   --text-success: rgb(68, 189, 50);
   --text-fail: rgb(232, 65, 24);
-  --text-info: rgb(72, 126, 176);
+  --text-info: rgb(102, 156, 206);
 
   --text-small: 12px;
   --text-default: 15px;
   --text-cta: 17px;
   --text-large: 20px;
   --text-subtitle: 24px;
-  --text-logo: 32px;
-  --text-title: 48px;
+  --text-logo: 30px;
+  --text-title: 42px;
 
   --font-primary: 'Open Sans';
 
   --padding-x-global: 320px;
-
   --gap-y-global: 96px;
-
   --header-height: 90px;
 
   font-family: var(--font-primary), sans-serif;
@@ -64,6 +62,48 @@ header {
   background-color: var(--background-secondary);
 }
 
+header nav {
+  display: flex;
+  gap: 16px;
+}
+
+header nav button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--text-info);
+  font-size: var(--text-large);
+  cursor: pointer;
+  transition: color 150ms ease-in-out;
+  white-space: nowrap;
+}
+
+header nav button::before {
+  content: '';
+  display: block;
+  position: relative;
+  top: 100%;
+  height: 2px;
+  width: 0;
+  border-radius: 1px;
+  background-color: var(--text-primary);
+  left: 50%;
+  transition: all 200ms ease-in-out;
+}
+
+header nav button:hover {
+  color: var(--text-primary);
+}
+
+header nav button:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+header nav button:first-of-type {
+  margin-left: 16px;
+}
+
 #header-logo {
   display: flex;
   gap: 8px;
@@ -86,7 +126,7 @@ main section {
 #section-hero {
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   white-space: nowrap;
   overflow: hidden;
 }
@@ -108,6 +148,8 @@ main section {
 }
 
 #hero-image {
+  aspect-ratio: initial;
+  width: 520px;
   animation: hero-image-animation 750ms ease-in-out;
 }
 
@@ -177,7 +219,7 @@ address {
   line-height: 1.25;
 }
 
-#statistics {
+#section-statistics {
   flex-direction: row;
   background-color: rgba(var(--background-white-rgb), .1);
   padding-top: 90px;
@@ -186,14 +228,14 @@ address {
   font-weight: 700;
 }
 
-#statistics div {
+#section-statistics div {
   display: flex;
   flex-direction: column;
   gap: 72px;
   flex: 1;
 }
 
-#statistics div:nth-of-type(2) {
+#section-statistics div:nth-of-type(2) {
   text-align: right;
   border-left: 1px solid var(--text-primary);
 }
