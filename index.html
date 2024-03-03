@@ -7,14 +7,11 @@
         content="faf,cars,car,sell,buy,auction,platform,market,marketplace,automobile,automobiles,vehicle,vehicles"/>
   <meta name="author" content="Alexandru Dobrojan"/>
   <meta name="description" content="A car selling platform"/>
-
-  <title>FAF Cars</title>
-
   <link rel="stylesheet" href="reset.css"/>
   <link rel="stylesheet" href="style.css"/>
+  <title>FAF Cars</title>
 </head>
 <body>
-
 <svg style="display: none">
   <defs>
     <symbol id="car" viewBox="0 0 30 27">
@@ -54,7 +51,6 @@
     </symbol>
   </defs>
 </svg>
-
 <header>
   <nav>
     <a href="#" class="logo" id="header-logo">
@@ -75,7 +71,6 @@
   </nav>
   <button class="cta-button"></button>
 </header>
-
 <main>
   <section id="section-hero">
     <div id="hero-text">
@@ -86,7 +81,10 @@
         In few clicks
       </h2>
     </div>
-    <img src="assets/hero.webp" id="hero-image" alt="hero-image"/>
+    <div id="hero-image-container">
+      <img id="hero-image-car" src="assets/hero.webp" alt="hero-image"/>
+      <img id="hero-image-tabby" src="assets/tabby-2.webp" alt="tabby">
+    </div>
   </section>
   <section id="section-why-us">
     <svg>
@@ -200,8 +198,26 @@
       </p>
     </div>
   </section>
+  <section id="got-convinced">
+    <div id="got-convinced-image-container">
+      <img id="got-convinced-image-car" src="assets/hero.webp" alt="hero-image"/>
+      <img id="got-convinced-image-tabby" src="assets/tabby-1.webp" alt="tabby">
+    </div>
+    <div id="got-convinced-text">
+      <h1>
+        Got convinced?
+      </h1>
+      <button class="cta-button" style="transform: scale(1.5);"></button>
+    </div>
+  </section>
 </main>
-
+<aside id="mascot">
+  <div id="mascot-text">
+    Meet <b>Tabby</b> <br/>
+    Your personal assistant!
+  </div>
+  <img src="assets/tabby-3.webp" alt="tabby"/>
+</aside>
 <footer>
   <nav>
     <a href="#">
@@ -224,11 +240,12 @@
     © 2024 fafcars.com. All rights reserved.
   </p>
 </footer>
+</body>
 
 <script>
   function _scrollTo(id) {
     document.getElementById(id).scrollIntoView({behavior: 'smooth'})
   }
 </script>
-</body>
+
 </html>
