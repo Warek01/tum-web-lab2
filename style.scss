@@ -292,9 +292,17 @@ footer {
   padding: 32px $padding-x-desktop;
   background-color: $background-secondary;
 
+  @media #{$mobile} {
+    padding: 12px;
+  }
+
   nav {
     display: flex;
     gap: 32px;
+
+    @media #{$mobile} {
+      flex-direction: column;
+    }
 
     a {
       text-decoration: none;
@@ -399,6 +407,18 @@ footer {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  width: 100%;
+
+  @media #{$mobile} {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  button {
+    @media #{$mobile} {
+      transform: scale(1.15);
+    }
+  }
 }
 
 #got-convinced-text {
@@ -410,17 +430,27 @@ footer {
     font-size: $text-title;
     font-weight: 700;
     color: $text-secondary;
+
+    @media #{$mobile} {
+      font-size: $text-subtitle;
+    }
   }
 }
 
 #got-convinced-image-container {
-  min-width: 520px;
+  width: 520px;
   height: 250px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   right: 100px;
+
+  @media #{$mobile} {
+    width: 250px;
+    height: 120px;
+    right: 0;
+  }
 
   img {
     position: absolute;
@@ -430,11 +460,21 @@ footer {
 
 #got-convinced-image-car {
   width: 600px;
+
+  @media #{$mobile} {
+    width: 250px;
+    height: 120px;
+  }
 }
 
 #got-convinced-image-tabby {
   width: 150px;
   transform: translateY(-90px);
+
+  @media #{$mobile} {
+    width: 80px;
+    transform: translateY(-40px);
+  }
 }
 
 .mobile-dropdown {
@@ -567,14 +607,22 @@ footer {
 }
 
 .desktop {
-  @media #{$mobile} {
+  @media screen and (max-width: 1099px) {
     display: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none
   }
 }
 
 .mobile {
-  @media #{$desktop} {
+  @media screen and (min-width: 1100px){
     display: none;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
   }
 }
 
