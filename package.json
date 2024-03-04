@@ -1,0 +1,13 @@
+{
+  "name": "tum-web-lab2",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch style.scss:style.css --style compressed",
+    "serve": "http-server -c-1 ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
