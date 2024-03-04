@@ -2,12 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 /* Global */
-$background-primary: #4b4b4b;
-$background-secondary: #363636;
+$background-primary: #353b48;
+$background-secondary: #1e272e;
+$background-alternate: rgba(0, 0, 0, 0.2);
 $background-action: #686de0;
 $background-action-hover: #868bfe;
-$background-white: #ffffff;
-$text-primary: #f5f6fa;
+$background-white: #d2dae2;
+$text-primary: #d2dae2;
 $text-secondary: #a29bfe;
 $text-black: #000000;
 $text-disabled: #7f8fa6;
@@ -22,9 +23,17 @@ $text-subtitle: 24px;
 $text-logo: 30px;
 $text-title: 42px;
 $font-primary: 'Open Sans';
-$padding-x-global: 320px;
-$gap-y-global: 96px;
+$padding-x-desktop: 320px;
+$padding-x-mobile: 24px;
+$gap-y-desktop: 96px;
+$gap-y-mobile: 128px;
 $header-height: 90px;
+$mobile: 'screen and (max-width: 1099px)';
+$desktop: 'screen and (min-width: 1100px)';
+
+* {
+  box-sizing: border-box;
+}
 
 :root {
   font-family: $font-primary, sans-serif;
@@ -35,10 +44,11 @@ $header-height: 90px;
 body {
   display: flex;
   flex-direction: column;
-  gap: $gap-y-global;
+  gap: $gap-y-desktop;
   background-color: $background-primary;
-  padding-top: calc($header-height + $gap-y-global);
+  padding-top: calc($header-height + $gap-y-desktop);
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 svg {
@@ -47,60 +57,36 @@ svg {
 
 header {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   top: 0;
   width: 100%;
   box-sizing: border-box;
-  display: flex;
   height: $header-height;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 $padding-x-global;
-  background-color: $background-secondary;
+  padding: 0 $padding-x-desktop;
   z-index: 10;
+  background-color: $background-secondary;
+
+  @media #{$mobile} {
+    padding: 24px $padding-x-mobile;
+    height: calc($header-height * 2);
+    flex-direction: column;
+  }
 
   nav {
     display: flex;
+    align-items: center;
     gap: 16px;
-
-    button {
-      background-color: transparent;
-      outline: none;
-      border: none;
-      color: $text-info;
-      font-size: $text-large;
-      cursor: pointer;
-      transition: color 150ms ease-in-out;
-      white-space: nowrap;
-
-      &::before {
-        content: '';
-        display: block;
-        position: relative;
-        top: 100%;
-        height: 2px;
-        width: 0;
-        border-radius: 1px;
-        background-color: $text-primary;
-        left: 50%;
-        transition: all 200ms ease-in-out;
-      }
-
-      &:hover {
-        color: $text-primary;
-
-        &::before {
-          width: 100%;
-          left: 0;
-        }
-      }
-
-      &:first-of-type {
-        margin-left: 16px;
-      }
-    }
   }
 }
 
+#mobile-header-area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 #header-logo {
   display: flex;
@@ -110,16 +96,26 @@ header {
 main {
   display: flex;
   flex-direction: column;
-  gap: $gap-y-global;
+  gap: $gap-y-desktop;
+
+  @media #{$mobile} {
+    gap: $gap-y-mobile;
+  }
 
   section {
     display: flex;
     flex-direction: column;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
     gap: 72px;
     align-items: start;
-    padding: 0 $padding-x-global;
-  }
+    padding: 0 $padding-x-desktop;
 
+    @media #{$mobile} {
+      padding: 0 $padding-x-mobile;
+    }
+  }
 }
 
 #section-hero {
@@ -127,6 +123,10 @@ main {
   align-items: center;
   justify-content: space-evenly;
   white-space: nowrap;
+
+  @media #{$mobile} {
+    flex-direction: column;
+  }
 }
 
 #hero-text {
@@ -162,11 +162,20 @@ main {
 
 #hero-image-car {
   width: 520px;
+
+  @media #{$mobile} {
+    width: 320px;
+  }
 }
 
 #hero-image-tabby {
   width: 130px;
   transform: translateY(-110px);
+
+  @media #{$mobile} {
+    width: 90px;
+    transform: translateY(-80px);
+  }
 }
 
 @keyframes hero-image-animation {
@@ -182,8 +191,16 @@ main {
 #section-why-us {
   flex-direction: row;
   gap: 130px;
-  padding: 150px $padding-x-global;
-  background-color: rgba($background-white, 0.1);
+  padding: 150px $padding-x-desktop;
+  background-color: $background-alternate;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @media #{$mobile} {
+    flex-direction: column;
+    padding: 150px $padding-x-mobile;
+  }
 }
 
 #features-list {
@@ -192,10 +209,19 @@ main {
   flex-direction: column;
   gap: 72px;
 
+  @media #{$mobile} {
+    font-size: 22px;
+    gap: 96px;
+  }
+
   .feature {
     display: flex;
     gap: 36px;
     max-width: 780px;
+
+    @media #{$mobile} {
+      gap: 16px;
+    }
 
     &:nth-child(even) {
       text-align: right;
@@ -206,6 +232,8 @@ main {
     svg {
       width: 72px;
       height: 72px;
+      min-width: 72px;
+      min-height: 72px;
     }
 
     div {
@@ -237,7 +265,7 @@ address {
 
 #section-statistics {
   flex-direction: row;
-  background-color: rgba($background-white, .1);
+  background-color: $background-alternate;
   padding-top: 90px;
   padding-bottom: 90px;
   font-size: $text-subtitle;
@@ -256,13 +284,12 @@ address {
   }
 }
 
-
 footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 48px;
-  padding: 32px $padding-x-global;
+  padding: 32px $padding-x-desktop;
   background-color: $background-secondary;
 
   nav {
@@ -410,6 +437,57 @@ footer {
   transform: translateY(-90px);
 }
 
+.mobile-dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .head {
+    cursor: pointer;
+    background-color: rgba($background-white, .1);
+    padding: 18px 20px;
+    font-size: $text-subtitle;
+    font-weight: 600;
+    border-radius: 36px;
+    user-select: none;
+  }
+
+  &:hover, &:active, &:focus-within, &:focus {
+    .head {
+      border-radius: 24px 24px 0 0;
+      background-color: rgba($background-white, .2);
+    }
+
+    .body {
+      max-height: 2000px;
+      padding: 24px 0;
+    }
+  }
+
+  .body {
+    position: absolute;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    gap: 24px;
+    font-size: $text-large;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: $background-secondary;
+    top: calc(50% + 30px);
+    left: -16px;
+    border-radius: 24px;
+    transition: all 200ms ease-in-out;
+
+    > * {
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+  }
+}
+
 .logo {
   color: $text-primary;
   font-size: 32px;
@@ -425,12 +503,20 @@ footer {
   font-size: $text-title;
   text-transform: uppercase;
   font-weight: 700;
+
+  @media #{$mobile} {
+    font-size: 28px;
+  }
 }
 
 .subtitle {
   color: $text-primary;
   font-size: $text-subtitle;
   font-weight: 600;
+
+  @media #{$mobile} {
+    font-size: 22px;
+  }
 }
 
 .cta-button {
@@ -447,6 +533,11 @@ footer {
   white-space: nowrap;
   transition: 175ms ease;
 
+  @media #{$mobile} {
+    padding: 16px 20px;
+    border-radius: 32px;
+  }
+
   &:hover {
     background-color: $background-action-hover;
   }
@@ -457,6 +548,11 @@ footer {
     letter-spacing: 1px;
     color: $text-black;
     font-weight: 600;
+
+    @media #{$mobile} {
+      font-size: $text-subtitle;
+      letter-spacing: 0;
+    }
   }
 
   &::after {
@@ -467,5 +563,57 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.desktop {
+  @media #{$mobile} {
+    display: none;
+  }
+}
+
+.mobile {
+  @media #{$desktop} {
+    display: none;
+  }
+}
+
+.link-button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: $text-info;
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 150ms ease-in-out;
+  white-space: nowrap;
+  position: relative;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    height: 2px;
+    width: 0;
+    border-radius: 1px;
+    background-color: $text-primary;
+    left: 50%;
+    transition: all 200ms ease-in-out;
+  }
+
+  &:hover {
+    color: $text-primary;
+
+    &::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  &:first-of-type {
+    @media #{$desktop} {
+      margin-left: 16px;
+    }
   }
 }
