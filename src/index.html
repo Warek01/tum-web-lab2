@@ -1,275 +1,394 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
-  <meta name="keywords"
-        content="faf,cars,car,sell,buy,auction,platform,market,marketplace,automobile,automobiles,vehicle,vehicles"/>
-  <meta name="author" content="Alexandru Dobrojan"/>
-  <meta name="description" content="A car selling platform"/>
-  <link rel="stylesheet" href="reset.css"/>
-  <link rel="stylesheet" href="style.css"/>
-  <title>FAF Cars</title>
-</head>
-<body>
-<svg style="display: none">
-  <defs>
-    <symbol id="car" viewBox="0 0 30 27">
-      <path
-        d="M25.5 24H4.5V25.5C4.5 26.3284 3.82842 27 3 27H1.5C0.67158 27 0 26.3284 0 25.5V10.5L3.72075 1.81824C4.19349 0.715185 5.27811 0 6.47818 0H23.5218C24.722 0 25.8065 0.715185 26.2793 1.81824L30 10.5V25.5C30 26.3284 29.3284 27 28.5 27H27C26.1716 27 25.5 26.3284 25.5 25.5V24ZM27 13.5H3V21H27V13.5ZM3.26391 10.5H26.7362L23.5218 3H6.47818L3.26391 10.5ZM6.75 19.5C5.50736 19.5 4.5 18.4926 4.5 17.25C4.5 16.0074 5.50736 15 6.75 15C7.99264 15 9 16.0074 9 17.25C9 18.4926 7.99264 19.5 6.75 19.5ZM23.25 19.5C22.0074 19.5 21 18.4926 21 17.25C21 16.0074 22.0074 15 23.25 15C24.4926 15 25.5 16.0074 25.5 17.25C25.5 18.4926 24.4926 19.5 23.25 19.5Z"
-      />
-    </symbol>
-    <symbol id="medal" viewBox="0 0 88 118">
-      <path
-        d="M71.0834 77.5793V114.8C71.0834 116.295 69.8706 117.509 68.375 117.509C67.8843 117.509 67.4027 117.375 66.9818 117.123L44 103.333L21.0185 117.123C19.7358 117.892 18.0722 117.476 17.3026 116.194C17.0501 115.772 16.9167 115.291 16.9167 114.8V77.5793C7.00998 69.6379 0.666687 57.4347 0.666687 43.75C0.666687 19.8177 20.0677 0.416687 44 0.416687C67.9325 0.416687 87.3334 19.8177 87.3334 43.75C87.3334 57.4347 80.9899 69.6379 71.0834 77.5793ZM27.75 83.9336V100.45L44 90.6995L60.25 100.45V83.9336C55.232 85.9648 49.7466 87.0834 44 87.0834C38.2535 87.0834 32.7682 85.9648 27.75 83.9336ZM44 76.25C61.9492 76.25 76.5 61.6992 76.5 43.75C76.5 25.8008 61.9492 11.25 44 11.25C26.0508 11.25 11.5 25.8008 11.5 43.75C11.5 61.6992 26.0508 76.25 44 76.25Z"
-      />
-    </symbol>
-    <symbol id="dollar" viewBox="0 0 99 95">
-      <path
-        d="M84.2418 62.1226C91.5256 44.8732 84.9881 24.4965 68.3531 14.8924C56.3323 7.95213 42.0759 8.3909 30.8292 14.8034L26.1568 6.62593C40.2152 -1.38953 58.0353 -1.93801 73.0614 6.73733C94.2051 18.9445 102.299 45.0742 92.448 66.8606L98.7656 70.5082L79.155 80.9329L78.3781 58.7373L84.2418 62.1226ZM14.7977 32.9026C7.51404 50.1522 14.0517 70.5289 30.6865 80.133C42.7073 87.073 56.9632 86.6347 68.2095 80.2224L72.882 88.3998C58.8239 96.4148 41.0043 96.9634 25.9781 88.2883C4.83471 76.081 -3.25893 49.9511 6.59163 28.1648L0.273987 24.5173L19.8845 14.0926L20.6617 36.2882L14.7977 32.9026ZM33.0406 56.9293H58.9364C60.2369 56.9293 61.2906 55.8751 61.2906 54.5752C61.2906 53.2752 60.2369 52.221 58.9364 52.221H40.1031C33.6023 52.221 28.3323 46.951 28.3323 40.4502C28.3323 33.9494 33.6023 28.6794 40.1031 28.6794H44.8114V23.9711H54.2281V28.6794H65.9989V38.096H40.1031C38.803 38.096 37.749 39.1502 37.749 40.4502C37.749 41.7501 38.803 42.8043 40.1031 42.8043H58.9364C65.4372 42.8043 70.7073 48.0744 70.7073 54.5752C70.7073 61.076 65.4372 66.346 58.9364 66.346H54.2281V71.0544H44.8114V66.346H33.0406V56.9293Z"
-      />
-    </symbol>
-    <symbol id="filter" viewBox="0 0 73 73">
-      <path
-        d="M72.75 0V8.08333H68.7083L48.5 38.3958V72.75H24.25V38.3958L4.04167 8.08333H0V0H72.75ZM13.7566 8.08333L32.3333 35.9482V64.6667H40.4167V35.9482L58.9934 8.08333H13.7566Z"
-      />
-    </symbol>
-    <symbol id="ad" viewBox="0 0 81 73">
-      <path
-        d="M42.9169 52.6667L29.9874 20.3333H21.904L13.8207 40.5417L13.8167 40.5497L8.97085 52.6667H17.6768L19.2931 48.625H32.5905L34.2071 52.6667H42.9169ZM22.5227 40.5417L25.9457 31.9939L29.3613 40.5417H22.5227ZM60.7083 20.3333H68.7917V52.6667H56.6667C49.97 52.6667 44.5417 47.2383 44.5417 40.5417C44.5417 33.845 49.97 28.4167 56.6667 28.4167H60.7083V20.3333ZM56.6667 36.5C54.4349 36.5 52.625 38.3099 52.625 40.5417C52.625 42.7735 54.4349 44.5833 56.6667 44.5833H60.7083V36.5H56.6667ZM76.875 0.125H4.12501C1.893 0.125 0.0833435 1.93466 0.0833435 4.16667V68.8333C0.0833435 71.0651 1.893 72.875 4.12501 72.875H76.875C79.1068 72.875 80.9167 71.0651 80.9167 68.8333V4.16667C80.9167 1.93466 79.1068 0.125 76.875 0.125ZM8.16668 64.7917V8.20833H72.8334V64.7917H8.16668Z"
-      />
-    </symbol>
-    <symbol id="support" viewBox="0 0 102 102">
-      <path
-        d="M87.3829 32.6667H92.25C97.3127 32.6667 101.417 36.7708 101.417 41.8334V60.1667C101.417 65.2295 97.3127 69.3334 92.25 69.3334H87.3829C85.1275 87.4206 69.6982 101.417 51 101.417V92.25C66.1878 92.25 78.5 79.9378 78.5 64.75V37.25C78.5 22.0622 66.1878 9.75004 51 9.75004C35.8121 9.75004 23.5 22.0622 23.5 37.25V69.3334H9.74998C4.68737 69.3334 0.583313 65.2295 0.583313 60.1667V41.8334C0.583313 36.7708 4.68737 32.6667 9.74998 32.6667H14.617C16.8724 14.5795 32.3017 0.583374 51 0.583374C69.6982 0.583374 85.1275 14.5795 87.3829 32.6667ZM9.74998 41.8334V60.1667H14.3333V41.8334H9.74998ZM87.6666 41.8334V60.1667H92.25V41.8334H87.6666ZM31.5641 68.3475L36.4231 60.5733C40.649 63.2201 45.6457 64.75 51 64.75C56.3542 64.75 61.351 63.2201 65.5768 60.5733L70.4361 68.3475C64.8013 71.8767 58.139 73.9167 51 73.9167C43.861 73.9167 37.1987 71.8767 31.5641 68.3475Z"
-      />
-    </symbol>
-    <symbol id="pin" viewBox="0 0 40 48">
-      <path
-        d="M20 41.2822L30.7243 30.5576C36.6474 24.6348 36.6474 15.0317 30.7243 9.10879C24.8015 3.18584 15.1985 3.18584 9.27554 9.10879C3.35259 15.0317 3.35259 24.6348 9.27554 30.5576L20 41.2822ZM20 47.4104L6.21142 33.6219C-1.40381 26.0065 -1.40381 13.6599 6.21142 6.04467C13.8266 -1.57055 26.1733 -1.57055 33.7887 6.04467C41.4039 13.6599 41.4039 26.0065 33.7887 33.6219L20 47.4104ZM20 24.1666C22.3933 24.1666 24.3333 22.2266 24.3333 19.8333C24.3333 17.44 22.3933 15.4999 20 15.4999C17.6067 15.4999 15.6667 17.44 15.6667 19.8333C15.6667 22.2266 17.6067 24.1666 20 24.1666ZM20 28.4999C15.2135 28.4999 11.3333 24.6196 11.3333 19.8333C11.3333 15.0468 15.2135 11.1666 20 11.1666C24.7864 11.1666 28.6667 15.0468 28.6667 19.8333C28.6667 24.6196 24.7864 28.4999 20 28.4999Z"
-      />
-    </symbol>
-  </defs>
-</svg>
-<header>
-  <nav>
-    <a href="#" class="logo" id="header-logo">
-      <svg width="32" height="32">
-        <use href="#car"/>
-      </svg>
-      faf cars
-    </a>
-    <button class="desktop link-button" onclick="_scrollTo('section-what-we-offer')">
-      Features
-    </button>
-    <button class="desktop link-button" onclick="_scrollTo('section-find-us')">
-      Find us
-    </button>
-    <button class="desktop link-button" onclick="_scrollTo('section-statistics')">
-      Our achievements
-    </button>
-  </nav>
-  <div class="mobile" id="mobile-header-area">
-    <div class="mobile-dropdown">
-      <p class="head">
-        Navigate
-      </p>
-      <div class="body">
-        <button class="link-button" onclick="_scrollTo('section-what-we-offer')">
-          Features
-        </button>
-        <button class="link-button" onclick="_scrollTo('section-find-us')">
-          Find us
-        </button>
-        <button class="link-button" onclick="_scrollTo('section-statistics')">
-          Our achievements
-        </button>
-      </div>
-    </div>
-    <button class="cta-button"></button>
-  </div>
-  <button class="cta-button desktop"></button>
-</header>
-<main>
-  <section id="section-hero">
-    <div id="hero-text">
-      <h1 class="title">
-        Buy and sell cars
-      </h1>
-      <h2 class="subtitle">
-        In few clicks
-      </h2>
-    </div>
-    <div id="hero-image-container">
-      <img id="hero-image-car" src="../assets/hero.webp" alt="hero-image"/>
-      <img id="hero-image-tabby" src="../assets/tabby-2.webp" alt="tabby">
-    </div>
-  </section>
-  <section id="section-why-us">
-    <svg>
-      <use href="#medal"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, user-scalable=yes"
+    />
+    <meta
+      name="keywords"
+      content="faf,cars,car,sell,buy,auction,platform,market,marketplace,automobile,automobiles,vehicle,vehicles"
+    />
+    <meta
+      name="author"
+      content="Alexandru Dobrojan"
+    />
+    <meta
+      name="description"
+      content="A car selling platform"
+    />
+    <link
+      rel="stylesheet"
+      href="dist.css"
+    />
+    <title>FAF Cars</title>
+  </head>
+  <body class="font-Open-Sans text-main-text bg-main-bg">
+    <svg style="display: none">
+      <defs>
+        <symbol
+          id="car"
+          viewBox="0 0 30 27"
+        >
+          <path
+            d="M25.5 24H4.5V25.5C4.5 26.3284 3.82842 27 3 27H1.5C0.67158 27 0 26.3284 0 25.5V10.5L3.72075 1.81824C4.19349 0.715185 5.27811 0 6.47818 0H23.5218C24.722 0 25.8065 0.715185 26.2793 1.81824L30 10.5V25.5C30 26.3284 29.3284 27 28.5 27H27C26.1716 27 25.5 26.3284 25.5 25.5V24ZM27 13.5H3V21H27V13.5ZM3.26391 10.5H26.7362L23.5218 3H6.47818L3.26391 10.5ZM6.75 19.5C5.50736 19.5 4.5 18.4926 4.5 17.25C4.5 16.0074 5.50736 15 6.75 15C7.99264 15 9 16.0074 9 17.25C9 18.4926 7.99264 19.5 6.75 19.5ZM23.25 19.5C22.0074 19.5 21 18.4926 21 17.25C21 16.0074 22.0074 15 23.25 15C24.4926 15 25.5 16.0074 25.5 17.25C25.5 18.4926 24.4926 19.5 23.25 19.5Z"
+          />
+        </symbol>
+        <symbol
+          id="medal"
+          viewBox="0 0 88 118"
+        >
+          <path
+            d="M71.0834 77.5793V114.8C71.0834 116.295 69.8706 117.509 68.375 117.509C67.8843 117.509 67.4027 117.375 66.9818 117.123L44 103.333L21.0185 117.123C19.7358 117.892 18.0722 117.476 17.3026 116.194C17.0501 115.772 16.9167 115.291 16.9167 114.8V77.5793C7.00998 69.6379 0.666687 57.4347 0.666687 43.75C0.666687 19.8177 20.0677 0.416687 44 0.416687C67.9325 0.416687 87.3334 19.8177 87.3334 43.75C87.3334 57.4347 80.9899 69.6379 71.0834 77.5793ZM27.75 83.9336V100.45L44 90.6995L60.25 100.45V83.9336C55.232 85.9648 49.7466 87.0834 44 87.0834C38.2535 87.0834 32.7682 85.9648 27.75 83.9336ZM44 76.25C61.9492 76.25 76.5 61.6992 76.5 43.75C76.5 25.8008 61.9492 11.25 44 11.25C26.0508 11.25 11.5 25.8008 11.5 43.75C11.5 61.6992 26.0508 76.25 44 76.25Z"
+          />
+        </symbol>
+        <symbol
+          id="dollar"
+          viewBox="0 0 99 95"
+        >
+          <path
+            d="M84.2418 62.1226C91.5256 44.8732 84.9881 24.4965 68.3531 14.8924C56.3323 7.95213 42.0759 8.3909 30.8292 14.8034L26.1568 6.62593C40.2152 -1.38953 58.0353 -1.93801 73.0614 6.73733C94.2051 18.9445 102.299 45.0742 92.448 66.8606L98.7656 70.5082L79.155 80.9329L78.3781 58.7373L84.2418 62.1226ZM14.7977 32.9026C7.51404 50.1522 14.0517 70.5289 30.6865 80.133C42.7073 87.073 56.9632 86.6347 68.2095 80.2224L72.882 88.3998C58.8239 96.4148 41.0043 96.9634 25.9781 88.2883C4.83471 76.081 -3.25893 49.9511 6.59163 28.1648L0.273987 24.5173L19.8845 14.0926L20.6617 36.2882L14.7977 32.9026ZM33.0406 56.9293H58.9364C60.2369 56.9293 61.2906 55.8751 61.2906 54.5752C61.2906 53.2752 60.2369 52.221 58.9364 52.221H40.1031C33.6023 52.221 28.3323 46.951 28.3323 40.4502C28.3323 33.9494 33.6023 28.6794 40.1031 28.6794H44.8114V23.9711H54.2281V28.6794H65.9989V38.096H40.1031C38.803 38.096 37.749 39.1502 37.749 40.4502C37.749 41.7501 38.803 42.8043 40.1031 42.8043H58.9364C65.4372 42.8043 70.7073 48.0744 70.7073 54.5752C70.7073 61.076 65.4372 66.346 58.9364 66.346H54.2281V71.0544H44.8114V66.346H33.0406V56.9293Z"
+          />
+        </symbol>
+        <symbol
+          id="filter"
+          viewBox="0 0 73 73"
+        >
+          <path
+            d="M72.75 0V8.08333H68.7083L48.5 38.3958V72.75H24.25V38.3958L4.04167 8.08333H0V0H72.75ZM13.7566 8.08333L32.3333 35.9482V64.6667H40.4167V35.9482L58.9934 8.08333H13.7566Z"
+          />
+        </symbol>
+        <symbol
+          id="ad"
+          viewBox="0 0 81 73"
+        >
+          <path
+            d="M42.9169 52.6667L29.9874 20.3333H21.904L13.8207 40.5417L13.8167 40.5497L8.97085 52.6667H17.6768L19.2931 48.625H32.5905L34.2071 52.6667H42.9169ZM22.5227 40.5417L25.9457 31.9939L29.3613 40.5417H22.5227ZM60.7083 20.3333H68.7917V52.6667H56.6667C49.97 52.6667 44.5417 47.2383 44.5417 40.5417C44.5417 33.845 49.97 28.4167 56.6667 28.4167H60.7083V20.3333ZM56.6667 36.5C54.4349 36.5 52.625 38.3099 52.625 40.5417C52.625 42.7735 54.4349 44.5833 56.6667 44.5833H60.7083V36.5H56.6667ZM76.875 0.125H4.12501C1.893 0.125 0.0833435 1.93466 0.0833435 4.16667V68.8333C0.0833435 71.0651 1.893 72.875 4.12501 72.875H76.875C79.1068 72.875 80.9167 71.0651 80.9167 68.8333V4.16667C80.9167 1.93466 79.1068 0.125 76.875 0.125ZM8.16668 64.7917V8.20833H72.8334V64.7917H8.16668Z"
+          />
+        </symbol>
+        <symbol
+          id="support"
+          viewBox="0 0 102 102"
+        >
+          <path
+            d="M87.3829 32.6667H92.25C97.3127 32.6667 101.417 36.7708 101.417 41.8334V60.1667C101.417 65.2295 97.3127 69.3334 92.25 69.3334H87.3829C85.1275 87.4206 69.6982 101.417 51 101.417V92.25C66.1878 92.25 78.5 79.9378 78.5 64.75V37.25C78.5 22.0622 66.1878 9.75004 51 9.75004C35.8121 9.75004 23.5 22.0622 23.5 37.25V69.3334H9.74998C4.68737 69.3334 0.583313 65.2295 0.583313 60.1667V41.8334C0.583313 36.7708 4.68737 32.6667 9.74998 32.6667H14.617C16.8724 14.5795 32.3017 0.583374 51 0.583374C69.6982 0.583374 85.1275 14.5795 87.3829 32.6667ZM9.74998 41.8334V60.1667H14.3333V41.8334H9.74998ZM87.6666 41.8334V60.1667H92.25V41.8334H87.6666ZM31.5641 68.3475L36.4231 60.5733C40.649 63.2201 45.6457 64.75 51 64.75C56.3542 64.75 61.351 63.2201 65.5768 60.5733L70.4361 68.3475C64.8013 71.8767 58.139 73.9167 51 73.9167C43.861 73.9167 37.1987 71.8767 31.5641 68.3475Z"
+          />
+        </symbol>
+        <symbol
+          id="pin"
+          viewBox="0 0 40 48"
+        >
+          <path
+            d="M20 41.2822L30.7243 30.5576C36.6474 24.6348 36.6474 15.0317 30.7243 9.10879C24.8015 3.18584 15.1985 3.18584 9.27554 9.10879C3.35259 15.0317 3.35259 24.6348 9.27554 30.5576L20 41.2822ZM20 47.4104L6.21142 33.6219C-1.40381 26.0065 -1.40381 13.6599 6.21142 6.04467C13.8266 -1.57055 26.1733 -1.57055 33.7887 6.04467C41.4039 13.6599 41.4039 26.0065 33.7887 33.6219L20 47.4104ZM20 24.1666C22.3933 24.1666 24.3333 22.2266 24.3333 19.8333C24.3333 17.44 22.3933 15.4999 20 15.4999C17.6067 15.4999 15.6667 17.44 15.6667 19.8333C15.6667 22.2266 17.6067 24.1666 20 24.1666ZM20 28.4999C15.2135 28.4999 11.3333 24.6196 11.3333 19.8333C11.3333 15.0468 15.2135 11.1666 20 11.1666C24.7864 11.1666 28.6667 15.0468 28.6667 19.8333C28.6667 24.6196 24.7864 28.4999 20 28.4999Z"
+          />
+        </symbol>
+      </defs>
     </svg>
-    <div>
-      <h1 class="title">
-        Why us
-      </h1>
-      <h2 class="subtitle">
-        For 15 years we keep offering the best seller - buyer experience on the online market
-      </h2>
-    </div>
-  </section>
-  <section id="section-what-we-offer">
-    <h1 class="title">
-      What we offer
-    </h1>
-    <ul id="features-list">
-      <li class="feature">
-        <svg>
-          <use href="#dollar"/>
-        </svg>
-        <div>
-          <h2 class="subtitle">Transparent transactions</h2>
-          <h3>
-            Our platform offers a transparent transaction system where both sides are completely aware of each
-            transaction step.
-          </h3>
+    <header class="bg-zinc-900 fixed w-screen z-50">
+      <div class="h-[90px] container flex flex-row justify-between items-center text-nowrap whitespace-nowrap">
+        <nav class="flex-row gap-3 flex">
+          <a
+            href="#"
+            class="logo uppercase text-main-text font-bold text-4xl flex items-center gap-3"
+          >
+            <svg class="w-9 h-9 fill-white">
+              <use href="#car" />
+            </svg>
+            faf cars
+          </a>
+          <button
+            aria-label="link"
+            role="link"
+            class="hidden lg:block ml-6"
+            onclick="_scrollTo('section-what-we-offer')"
+          >
+            Features
+          </button>
+          <button
+            role="link"
+            aria-label="link"
+            class="hidden lg:block"
+            onclick="_scrollTo('section-find-us')"
+          >
+            Find us
+          </button>
+          <button
+            role="link"
+            aria-label="link"
+            class="hidden lg:block"
+            onclick="_scrollTo('section-statistics')"
+          >
+            Our achievements
+          </button>
+        </nav>
+        <div class="hidden lg:hidden">
+          <div>
+            <p class="">Navigate</p>
+            <div class="flex flex-col">
+              <button
+                role="link"
+                aria-label="link"
+                class=""
+                onclick="_scrollTo('section-what-we-offer')"
+              >
+                Features
+              </button>
+              <button
+                role="link"
+                aria-label="link"
+                class=""
+                onclick="_scrollTo('section-find-us')"
+              >
+                Find us
+              </button>
+              <button
+                role="link"
+                aria-label="link"
+                class=""
+                onclick="_scrollTo('section-statistics')"
+              >
+                Our achievements
+              </button>
+            </div>
+          </div>
+          <button
+            role="link"
+            aria-label="Call to Action"
+            class="cta-button"
+          ></button>
         </div>
-      </li>
-      <li class="feature">
-        <svg>
-          <use href="#filter"/>
-        </svg>
-        <div>
-          <h2 class="subtitle">Transparent transactions</h2>
-          <h3>
-            Our platform offers a transparent transaction system where both sides are completely aware of each
-            transaction step.
-          </h3>
+        <div class="hidden lg:block">
+          <button
+            role="link"
+            aria-label="Call to Action"
+            class="cta-button lg:flex"
+          ></button>
         </div>
-      </li>
-      <li class="feature">
-        <svg>
-          <use href="#car"/>
-        </svg>
-        <div>
-          <h2 class="subtitle">Hundreds of thousands of cars</h2>
-          <h3>
-            More than 100,000 cars are currently being sold on our platform
-          </h3>
+      </div>
+    </header>
+    <main class="flex flex-col gap-32 py-[180px]">
+      <section
+        id="section-hero"
+        class="container flex flex-col lg:flex-row gap-12 items-center justify-between"
+      >
+        <div class="flex flex-col gap-3">
+          <h1 class="title">Buy and sell cars</h1>
+          <h2 class="subtitle">In few clicks</h2>
         </div>
-      </li>
-      <li class="feature">
-        <svg>
-          <use href="#ad"/>
-        </svg>
-        <div>
-          <h2 class="subtitle">Ad intolerant</h2>
-          <h3>
-            Our platform does not provide targeted or any other kind of ads. We offer you only relevant matches based on
-            objective algorithms.
-          </h3>
+        <div
+          id="hero-image-container"
+          class="relative flex items-center justify-center w-[520px] h-[320px]"
+        >
+          <img
+            class="w-1/2 lg:w-[520px] absolute"
+            src="assets/hero.webp"
+            alt="hero-image"
+          />
+          <img
+            class="w-1/5 lg:w-[130px] absolute transform-gpu -translate-y-1/2 lg:-translate-y-24"
+            src="assets/tabby-2.webp"
+            alt="tabby"
+          />
         </div>
-      </li>
-      <li class="feature">
-        <svg>
-          <use href="#support"/>
-        </svg>
-        <div>
-          <h2 class="subtitle">Support</h2>
-          <h3>
-            Our platform offers 24/7 real-time customer service for any country and timezone.
-          </h3>
+      </section>
+      <section
+        id="section-why-us"
+        class="bg-white/10"
+      >
+        <div class="container flex flex-row justify-center items-center py-16 gap-8">
+          <svg class="shrink fill-white w-24 h-24">
+            <use href="#medal" />
+          </svg>
+          <div class="flex flex-col">
+            <h1 class="title">Why us</h1>
+            <h2 class="subtitle">
+              For 15 years we keep offering the bestseller - buyer experience on the online market
+            </h2>
+          </div>
         </div>
-      </li>
-    </ul>
-  </section>
-  <section id="section-find-us">
-    <h2 class="title">Where to find us</h2>
-    <div id="map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d651.6017723629343!2d28.86771941994401!3d46.99066323661017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1708354046224!5m2!1sen!2s"
-        width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade" class="desktop"></iframe>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d651.6017723629343!2d28.86771941994401!3d46.99066323661017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1708354046224!5m2!1sen!2s"
-        width="320" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade" class="mobile"></iframe>
-    </div>
-    <address>
-      Bld. Traian 4 <br/>
-      Chisinau, Republic of Moldova
-      <svg width="40" height="40">
-        <use href="#pin"/>
-      </svg>
-    </address>
-  </section>
-  <section id="section-statistics">
-    <div>
-      <p>
-        10,000+ authorized sellers
-      </p>
-      <p>
-        10,000,000+ cars sold
-      </p>
-    </div>
-    <div>
-      <p>
-        6 centers in Europe
-      </p>
-      <p>
-        10 years of experience
-      </p>
-    </div>
-  </section>
-  <section id="got-convinced">
-    <div id="got-convinced-image-container">
-      <img id="got-convinced-image-car" src="../assets/hero.webp" alt="hero-image"/>
-      <img id="got-convinced-image-tabby" src="../assets/tabby-1.webp" alt="tabby">
-    </div>
-    <div id="got-convinced-text">
-      <h1>
-        Got convinced?
-      </h1>
-      <button class="cta-button" style="transform: scale(1.5);"></button>
-    </div>
-  </section>
-</main>
-<aside id="mascot">
-  <div id="mascot-text">
-    Meet <b>Tabby</b> <br/>
-    Your personal assistant!
-  </div>
-  <img src="../assets/tabby-3.webp" alt="tabby"/>
-</aside>
-<footer>
-  <nav>
-    <a href="#">
-      Terms & conditions
-    </a>
-    <a href="#">
-      Privacy notes
-    </a>
-    <a href="#">
-      Cookies
-    </a>
-    <a href="#">
-      About
-    </a>
-    <a href="#">
-      Contact us
-    </a>
-  </nav>
-  <p>
-    © 2024 fafcars.com. All rights reserved.
-  </p>
-</footer>
-</body>
+      </section>
+      <section
+        id="section-what-we-offer"
+        class="container flex flex-col gap-12"
+      >
+        <h1 class="title">What we offer</h1>
+        <ul
+          id="features-list"
+          class="flex flex-col gap-12"
+        >
+          <li class="feature">
+            <svg>
+              <use href="#dollar" />
+            </svg>
+            <div>
+              <h2 class="subtitle">Transparent transactions</h2>
+              <h3>
+                Our platform offers a transparent transaction system where both sides are completely aware of each
+                transaction step.
+              </h3>
+            </div>
+          </li>
+          <li class="feature">
+            <svg>
+              <use href="#filter" />
+            </svg>
+            <div>
+              <h2 class="subtitle">Transparent transactions</h2>
+              <h3>
+                Our platform offers a transparent transaction system where both sides are completely aware of each
+                transaction step.
+              </h3>
+            </div>
+          </li>
+          <li class="feature">
+            <svg>
+              <use href="#car" />
+            </svg>
+            <div>
+              <h2 class="subtitle">Hundreds of thousands of cars</h2>
+              <h3>More than 100,000 cars are currently being sold on our platform</h3>
+            </div>
+          </li>
+          <li class="feature">
+            <svg>
+              <use href="#ad" />
+            </svg>
+            <div>
+              <h2 class="subtitle">Ad intolerant</h2>
+              <h3>
+                Our platform does not provide targeted or any other kind of ads. We offer you only relevant matches
+                based on objective algorithms.
+              </h3>
+            </div>
+          </li>
+          <li class="feature">
+            <svg>
+              <use href="#support" />
+            </svg>
+            <div>
+              <h2 class="subtitle">Support</h2>
+              <h3>Our platform offers 24/7 real-time customer service for any country and timezone.</h3>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section
+        id="section-find-us"
+        class="container"
+      >
+        <h2 class="title pb-12">Where to find us</h2>
+        <div id="map">
+          <iframe
+            title="Map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d651.6017723629343!2d28.86771941994401!3d46.99066323661017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1708354046224!5m2!1sen!2s"
+            class="border-none w-full aspect-video"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <address class="flex justify-end pt-12 text-right gap-4 font-medium not-italic">
+          Bld. Traian 4 <br />
+          Chisinau, Republic of Moldova
+          <svg class="h-10 w-10 fill-white">
+            <use href="#pin" />
+          </svg>
+        </address>
+      </section>
+      <section
+        id="section-statistics"
+        class="bg-white/10"
+      >
+        <div class="container flex flex-row px-12 lg:px-0 lg:justify-between text-2xl text-white items-center py-24">
+          <div class="flex flex-col gap-16">
+            <p>
+              <span class="text-purple-400"> 10,000+ </span>
+              authorized sellers
+            </p>
+            <p>
+              <span class="text-purple-400"> 10,000,000+ </span>
+              cars sold
+            </p>
+          </div>
+          <div class="hidden lg:block h-32 w-px bg-white/40"></div>
+          <div class="flex flex-col gap-16 text-right">
+            <p>
+              <span class="text-purple-400"> 6 </span>
+              centers in Europe
+            </p>
+            <p>
+              <span class="text-purple-400"> 10 </span>
+              years of experience
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        id="got-convinced"
+        class="flex flex-col lg:flex-row items-center justify-between container"
+      >
+        <div class="flex items-center justify-center relative w-[600px] h-[280px]">
+          <img
+            class="absolute w-1/2 lg:w-[600px]"
+            src="assets/hero.webp"
+            alt="hero-image"
+          />
+          <img
+            class="absolute w-1/5 lg:w-[150px] transform-gpu -translate-y-1/4 lg:-translate-y-20"
+            src="assets/tabby-1.webp"
+            alt="tabby"
+          />
+        </div>
+        <div class="flex flex-col items-stretch">
+          <h1 class="title">Got convinced?</h1>
+          <button
+            aria-label="Call to Action"
+            class="cta-button mt-8"
+          ></button>
+        </div>
+      </section>
+    </main>
+<!--    <aside-->
+<!--      id="mascot"-->
+<!--      class="fixed group right-0 top-full transform-gpu -translate-y-full w-[200px] h-[200px] duration-200 ease-in-out z-10 hover:-translate-x-5 hover:translate-y-[-110%]"-->
+<!--    >-->
+<!--      <div-->
+<!--        id="mascot-text"-->
+<!--        class="text-sm w-full -z-10 opacity-0 absolute px-2.5 py-3 rounded-lg group-hover:opacity-100 group-hover:transform-gpu group-hover:translate-y-[-58px] group-hover:bg-zinc-900"-->
+<!--      >-->
+<!--        Meet <span class="text-purple-500 font-bold">Tabby</span> <br />-->
+<!--        Your personal assistant!-->
+<!--      </div>-->
+<!--      <img-->
+<!--        src="assets/tabby-3.webp"-->
+<!--        alt="tabby"-->
+<!--        class="w-[200px] h-[200px]"-->
+<!--      />-->
+<!--    </aside>-->
+    <footer class="bg-zinc-900">
+      <div class="flex flex-col container h-[90px] justify-center">
+        <nav>
+          <a href="#"> Terms & conditions </a>
+          <a href="#"> Privacy notes </a>
+          <a href="#"> Cookies </a>
+          <a href="#"> About </a>
+          <a href="#"> Contact us </a>
+        </nav>
+        <p>&copy; 2024 fafcars.com. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 
-<script>
-  function _scrollTo(id) {
-    document.getElementById(id).scrollIntoView({behavior: 'smooth'})
-  }
-</script>
+  <script>
+    /** @param id {string} */
+    function _scrollTo(id) {
+      document.body.scrollTo({
+        behavior: 'smooth',
+        top: document.getElementById(id).offsetTop - 90,
+      });
 
+      console.log(document.getElementById(id).offsetTop);
+    }
+  </script>
 </html>
