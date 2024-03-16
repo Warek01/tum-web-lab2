@@ -4,9 +4,8 @@
   "description": "---",
   "main": "index.js",
   "scripts": {
-    "serve": "http-server -c-1 src/",
-    "tailwind": "tailwindcss -c tailwind.config.js -w -i src/style.css -o src/dist.css",
-    "format": "prettier -w src/"
+    "serve": "http-server -c-1 .",
+    "tailwind": "tailwindcss -c tailwind.config.js -w -i style.css -o dist.css"
   },
   "keywords": [],
   "author": "",
